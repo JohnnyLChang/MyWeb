@@ -5,7 +5,7 @@ require_once 'classhelper.php';
 
 function reply($content_type, $message)
 {
-    
+    global $TimeZone;
     $msgtokens = array(
         "今天課表" => 0,
         "明天課表" => 1,

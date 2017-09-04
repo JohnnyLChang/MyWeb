@@ -71,6 +71,7 @@ function getWorkingDays($startDate, $endDate)
 
 function dateDifference($start_date)
 {
+    global $TimeZone;
     $today = new DateTime('now', new DateTimeZone($TimeZone));
     $interval = date_diff($today, $start_date);
     return $interval->format("%d");
