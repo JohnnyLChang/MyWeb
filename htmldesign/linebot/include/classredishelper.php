@@ -17,6 +17,10 @@ class PRedisHelper{
             error_log("redis contructor");
             $this->redis = new Predis\Client(getenv('REDIS_URL'));
             $this->log = new Logger('redis');
+            if(!$this->$redis->isConnected()){
+                $this->log->addWarn("redis not connected");
+                $this->$redis->connect();
+            }
         }
         catch (Exception $e) {
             error_log("Couldn't connected to Redis");
