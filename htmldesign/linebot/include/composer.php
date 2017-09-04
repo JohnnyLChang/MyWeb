@@ -1,5 +1,6 @@
 <?php
-require('vendor/autoload.php');
+define('__ROOT__', dirname(dirname(__FILE__)));
+require(__ROOT__ .'/vendor/autoload.php');
 
 require_once './cloudinary/Cloudinary.php';
 require_once './cloudinary/Uploader.php';
