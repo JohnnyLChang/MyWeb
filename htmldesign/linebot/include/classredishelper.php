@@ -32,6 +32,10 @@ class PRedisHelper{
     }
 
     public function Exists($tag){
+        if(is_null($this->$redis))
+            $this->log->addError("redis is null");
+        if(is_null($this->$redis->exists))
+            $this->log->addError("redis->exists is null");
         return $this->$redis->exists($tag);
     }
 
