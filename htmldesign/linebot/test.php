@@ -1,5 +1,5 @@
 <?php
-require './include/composer.php';
+require_once './include/composer.php';
 
 $c = new CloudImages();
 $local_path = "./images/5_class_1.png";
@@ -10,5 +10,4 @@ if($res['success']==1) {
 }else { 
     $log->addWarning($res['data']);
 }
-
 ?>

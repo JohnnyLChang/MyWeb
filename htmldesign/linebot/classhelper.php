@@ -1,10 +1,10 @@
 <?php
-require './include/composer.php';
+require_once './include/composer.php';
 
 if(file_exists('.test'))
-    include 'common.php';
+    require_once 'common.php';
 else
-    include 'heroku.php';
+    require_once 'heroku.php';
 
 function is_holiday($pdate) {
     $not_holiday  = new DateTime("2017-9-30");
