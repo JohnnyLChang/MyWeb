@@ -1,7 +1,8 @@
 <?php
 require_once './include/composer.php';
+require_once './include/classredishelper.php';
+
 ini_set('memory_limit', '1024M');
-$redi = new PRedisHelper();
 
 if (file_exists('.test')) {
     require_once 'common.php';
@@ -75,7 +76,9 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url, $classoffset, $log, $redi;
+    global $url, $classoffset, $log;
+
+    $redi = new PRedisHelper();
 
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);

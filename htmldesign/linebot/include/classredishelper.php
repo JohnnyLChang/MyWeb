@@ -13,6 +13,7 @@ class PRedisHelper{
     private $log;
     
     public function __construct() {
+        error_log("redis contructor");
         $this->redis = new Predis\Client(getenv('REDIS_URL'));
         $this->log = new Logger('redis');
     }
