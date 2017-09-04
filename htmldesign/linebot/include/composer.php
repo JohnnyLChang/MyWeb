@@ -3,6 +3,7 @@ define('__ROOT__', dirname(dirname(__FILE__)));
 require(__ROOT__ .'/../../vendor/autoload.php');
 
 require_once './include/cloudinary.php';
+require_once './include/classredishelper.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
