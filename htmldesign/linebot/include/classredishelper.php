@@ -38,7 +38,7 @@ class PRedisHelper{
     }
 
     public function SetUrl($tag, $url){
-        $ret = $redis->set($tag, $url);
+        $ret = $this->redis->set($tag, $url);
         if(false == $ret){
             $this->log->addWarn("set " . $tag . " with " . $url . "failed");
         }
