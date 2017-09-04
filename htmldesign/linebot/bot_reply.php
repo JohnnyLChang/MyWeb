@@ -12,11 +12,11 @@ function reply($content_type, $message)
         "後天課表" => 2
     );
 
-    global $header, $from, $receive;
+    global $header, $from, $receive, $log;
         
-       $url = "https://api.line.me/v2/bot/message/push";
+    $url = "https://api.line.me/v2/bot/message/push";
        
-       $data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
+    $data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
 
     if (!array_key_exists($message, $msgtokens)) {
         $log->addInfo("message " . $message);

@@ -1,1 +1,4 @@
 *.test
+test.php
+common.php
+cloudinary_local.php

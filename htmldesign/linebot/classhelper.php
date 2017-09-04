@@ -57,8 +57,8 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url;
-    global $classoffset;
+    global $url, $classoffset, $log;
+    
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
     $cloud = new CloudImages();
