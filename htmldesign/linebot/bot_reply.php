@@ -16,12 +16,14 @@ function reply($content_type, $message) {
        $data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
 
         if (!array_key_exists($message, $msgtokens)) {
+            error_log("[classbot][NC] " . $message);
             return;
         }
 
        switch($content_type) {
        
            case "text" :
+            error_log("[classbot][TEXT] command: " . $message);
                $content_type = "文字訊息";
                $today = new Datetime();
                $diff = $msgtokens[$message];

@@ -37,7 +37,9 @@
 	
 	// 準備Post回Line伺服器的資料 
 	$header = ["Content-Type: application/json", "Authorization: Bearer {" . $channel_access_token . "}"];
-	
+    
+    error_log("[classbot] recieve msg: " . $header);
+    
 	// 回覆訊息
     reply($content_type, $text);
 ?>
