@@ -44,6 +44,8 @@ function reply($content_type, $message)
                      ];
             } else {
                  list($l1, $l2) = generate_class($today);
+                 $log->addInfo(" url1: " . $l1);
+                 $log->addInfo(" url2: " . $l2);
                  $data = [
                     "to" => $from,
                     "messages" => array(
