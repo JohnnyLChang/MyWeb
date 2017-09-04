@@ -13,22 +13,29 @@ class PRedisHelper{
     private $log;
     
     public function __construct() {
-        error_log("redis contructor");
-        $this->redis = new Predis\Client(getenv('REDIS_URL'));
-        $this->log = new Logger('redis');
+        try{
+            error_log("redis contructor");
+            $this->redis = new Predis\Client(getenv('REDIS_URL'));
+            $this->log = new Logger('redis');
+        }
+        catch (Exception $e) {
+            error_log("Couldn't connected to Redis");
+            error_log($e->getMessage());
+        }
+        
     }
     
-    function GetUrl($tag){
+    public function GetUrl($tag){
         if($this->$redis->exists($tag))
             return $this->$redis->get($tag);
             $this->log->addWarn("get " . $tag . " not found");
     }
 
-    function Exists($tag){
+    public function Exists($tag){
         return $this->$redis->exists($tag);
     }
 
-    function SetUrl($tag, $url){
+    public function SetUrl($tag, $url){
         $ret = $redis->set($tag, $url);
         if(false == $ret){
             $this->log->addWarn("set " . $tag . " with " . $url . "failed");
