@@ -1,6 +1,9 @@
 <?php
 require_once './include/composer.php';
 
+use Predis;
+$redis = new Predis\Client(getenv('REDIS_URL'));
+
 $c = new CloudImages();
 $local_path = "./images/5_class_1.png";
 $image_id = "5_class_1";

@@ -1,8 +1,12 @@
-<?php
+<?
+define('__ROOT__', dirname(dirname(__FILE__)));
+require(__ROOT__ .'/../../vendor/autoload.php');
+
 require_once('./include/composer.php');
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Predis;
 
 class PRedisHelper{
     private $redis;
