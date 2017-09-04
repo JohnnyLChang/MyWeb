@@ -6,6 +6,8 @@ $channel_secret = getenv('ch_secret');
 $channel_access_token = getenv('ch_token');
 
 $classoffset = array(
+    0,
+    667, 
     900, 
     1158, 
     1480, 
