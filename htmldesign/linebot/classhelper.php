@@ -100,7 +100,7 @@ function generate_class($today_now)
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
                 $url1 = $res["surl"];
-                $redi->GSetUrl($id_morning, $url1);
+                $redi->SetUrl($id_morning, $url1);
             } else {
                 $log->addError($res['data']);
             }
@@ -119,7 +119,7 @@ function generate_class($today_now)
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
                 $url2 = $res["surl"];
-                $redi->GSetUrl($id_afternoon, $url2);
+                $redi->SetUrl($id_afternoon, $url2);
             } else {
                 $log->addError($res['data']);
             }
