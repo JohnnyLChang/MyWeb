@@ -1,4 +1,5 @@
 <?php
+require './include/composer.php';
 
 if(file_exists('.test'))
     include 'common.php';
@@ -60,19 +61,28 @@ function generate_class($today_now)
     global $classoffset;
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
-    
-    $url1 = $url . "images/" . $offset . "_class_1.png";
-    $url2 = $url . "images/" . $offset . "_class_2.png";
-    $file_morning = "./images/" . $offset . "_class_1.png";
-    $file_afternoon = "./images/" . $offset . "_class_2.png";
-    
+    $cloud = new CloudImages();
+    $url1 = "";
+    $url2 = "";
+    $id_morning = $offset . "_class_1";
+    $id_afternoon = $offset . "_class_2";
+    $file_morning = "/tmp/" . $offset . "_class_1.png";
+    $file_afternoon = "/tmp/" . $offset . "_class_2.png";
+
     if ( !file_exists($file_morning) ) {
         $im = imagecreatefrompng('./images/class_schedule.png');
         $center = $classoffset[$offset];
         $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
         if ($im_morning !== FALSE) {
             imagepng($im_morning, $file_morning);
+            $res=$c->UploadLocalToCloudFile($file_morning, $id_morning);
+            if($res['success']==1) {
+                $log->addInfo("file successfully Upload" . $res["surl"]);
+            }else { 
+                $log->addError($res['data']);
+            }
         }
+        
         $im_after = imagecrop($im, ['x' => 1640, 'y' => $center-150, 'width' => 1580, 'height' => 300]);
         if ($im_after !== FALSE) {
             imagepng($im_after, $file_afternoon);
@@ -81,6 +91,6 @@ function generate_class($today_now)
     return array($url1, $url2);
 }
 
-$today = new DateTime('now');
+//$today = new DateTime('now');
 
 ?>

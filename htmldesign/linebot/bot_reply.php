@@ -1,5 +1,7 @@
 <?php
-include 'class.php';
+require './include/composer.php';
+
+include 'classhelper.php';
 
 function reply($content_type, $message) {
     
@@ -16,21 +18,23 @@ function reply($content_type, $message) {
        $data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
 
         if (!array_key_exists($message, $msgtokens)) {
-            error_log("[classbot][NC] " . $message);
+            $log->addInfo("message " . $message);
             return;
         }
 
        switch($content_type) {
        
            case "text" :
-            error_log("[classbot][TEXT] command: " . $message);
+            $log->addInfo(" command: " . $message);
                $content_type = "文字訊息";
                $today = new Datetime();
                $diff = $msgtokens[$message];
+
                if ( $diff > 0 )
                     $today = $today->modify('+' . $diff .' day');
+
                if (is_holiday($today)) {
-                    $replymsg = mb_substr($message, 0, 2, "UTF-8") . "不用上課喔！！";
+                    $replymsg = mb_substr($message, 0, 2, "UTF-8") . " " . date_format($today,"Y/m/d") . " 不用上課喔！！";
                     $data = [
                        "to" => $from, 
                        "messages" => array(

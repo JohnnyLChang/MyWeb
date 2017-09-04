@@ -1,14 +1,14 @@
 <?php
-    $msgtokens = array(
-        "今天課表" => 0,
-        "明天課表" => 1,
-        "後天課表" => 2,
-    );
+require './include/composer.php';
 
-    if (in_array("今天課表", $msgtokens)) {
-        echo $msgtokens["今天課表"];
-    }
+$c = new CloudImages();
+$local_path = "./images/5_class_1.png";
+$image_id = "5_class_1";
+$res=$c->UploadLocalToCloudFile($local_path, $image_id);
+if($res['success']==1) {
+    $log->addInfo("file successfully Upload" . $res["surl"]);
+}else { 
+    $log->addWarning($res['data']);
+}
 
-    $msg = "今天課表";
-    echo mb_substr($msg, 0, 2, "UTF-8") . "不用上課喔！！！";
 ?>
