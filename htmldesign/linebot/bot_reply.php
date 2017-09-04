@@ -27,7 +27,7 @@ function reply($content_type, $message)
         case "text":
             $log->addInfo(" command: " . $message);
             $content_type = "文字訊息";
-            $today = new Datetime();
+            $today = new Datetime('now', new DateTimeZone($TimeZone));
             $diff = $msgtokens[$message];
 
             if ($diff > 0) {

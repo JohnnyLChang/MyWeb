@@ -14,4 +14,6 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::INFO));
 if (file_exists('.test')) {
   require_once './include/cloudinary_local.php';
 }
+
+$TimeZone = 'Asia/Taipei';
 ?>
