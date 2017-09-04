@@ -1,29 +1,21 @@
 <?php
-
-if(file_exists('.test'))
-    include 'common.php';
-else
-    include 'heroku.php';
-
-function is_holiday($pdate) {
-    $not_holiday  = new DateTime("2017-9-30");
-    $diff = date_diff($not_holiday, $pdate);
-    if ( 0 == intval($diff->format("%a"))) {
-        return false;
-    }
-    $when = strtotime($pdate->format('Y-m-d H:i:s'));
-    $what_day = date("N", $when);
-    if ($what_day > 5)
-        return true;
-    else
-        return false;
-}
+$classoffset = array(
+    667, 
+    900, 
+    1158, 
+    1480, 
+    1752, 
+    2040, 
+    2310
+);
 
 function getWorkingDays($startDate, $endDate)
 {
     $begin = strtotime($startDate->format('Y-m-d H:i:s'));
     $end   = strtotime($endDate->format('Y-m-d H:i:s'));
     if ($begin > $end) {
+        echo "startdate is in the future! <br />";
+
         return 0;
     } else {
         $no_days  = 0;
@@ -37,12 +29,7 @@ function getWorkingDays($startDate, $endDate)
             $begin += 86400; // +1 day
         };
         $working_days = $no_days - $weekends;
-        $not_holiday  = new DateTime("2017-9-30");
-        $diff = date_diff($not_holiday, $endDate);
-        $datediff = intval($diff->format("%R%a"));
-        if( $datediff >= 0)
-            $working_days++;
-            
+
         return $working_days;
     }
 }
@@ -54,15 +41,11 @@ function dateDifference($start_date)
     return $interval->format("%d");
 }
 
-function generate_class($today_now)
-{
-    global $url;
-    global $classoffset;
+function generate_todayclass(){
     $start_date  = new DateTime("2017-8-31");
+    $today_now = new DateTime('now');
     $offset =  getWorkingDays($start_date, $today_now);
     
-    $url1 = $url . "images/" . $offset . "_class_1.png";
-    $url2 = $url . "images/" . $offset . "_class_2.png";
     $file_morning = "./images/" . $offset . "_class_1.png";
     $file_afternoon = "./images/" . $offset . "_class_2.png";
     
@@ -78,9 +61,6 @@ function generate_class($today_now)
             imagepng($im_after, $file_afternoon);
         }
     }
-    return array($url1, $url2);
 }
-
-$today = new DateTime('now');
 
 ?>

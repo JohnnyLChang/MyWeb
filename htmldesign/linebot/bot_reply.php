@@ -14,9 +14,6 @@ function reply($content_type, $message) {
        $url = "https://api.line.me/v2/bot/message/push";
        
        $data = ["to" => $from, "messages" => array(["type" => "text", "text" => $message])];
-       
-       $class1 = "https://499f383d.ngrok.io/johnny/htmldesign/linebot/images/3_class_1.png";
-       $class2 = "https://499f383d.ngrok.io/johnny/htmldesign/linebot/images/3_class_2.png";
 
         if (!array_key_exists($message, $msgtokens)) {
             return;
@@ -44,8 +41,8 @@ function reply($content_type, $message) {
                     $data = [
                        "to" => $from, 
                        "messages" => array(
-                           ["type" => "image", "originalContentUrl" => $class1, "previewImageUrl" => $l1],
-                           ["type" => "image", "originalContentUrl" => $class2, "previewImageUrl" => $l2]
+                           ["type" => "image", "originalContentUrl" => $l1, "previewImageUrl" => $l1],
+                           ["type" => "image", "originalContentUrl" => $l2, "previewImageUrl" => $l2]
                            )
                         ];
                }

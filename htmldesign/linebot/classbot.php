@@ -1,9 +1,9 @@
 <?php
     include 'bot_reply.php';
 
-    $channel_id = "1533630624";
-	$channel_secret = "c2bbb12db947ce68ccda8bddf3d38535";
-	$channel_access_token = "A4JjzafM/45VLpK4QgEFqWkCuT34Uj4FT2isLC5pPeR+DD1u1gaWAqtdGg9hivP3ndkN37GhwqRwHlZJLdwQaQLrnWihQamZXGFrMZPtdEyifQGo/EJRq+V2SlRnqeaGbF/D7OW4nqdX1LXGJ7lG3QdB04t89/1O/w1cDnyilFU=";
+    global $channel_id;
+	global $channel_secret;
+	global $channel_access_token;
 
 	$myURL = "https://javaclass.herokuapp.com/linebot/classbot.php";
 
