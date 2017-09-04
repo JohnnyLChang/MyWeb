@@ -2,3 +2,5 @@
 test.php
 common.php
 cloudinary_local.php
+vendor/*
+htmldesign/linebot/vendor/*
