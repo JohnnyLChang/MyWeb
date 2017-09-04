@@ -1,24 +1,39 @@
 <?php
 require_once './include/composer.php';
-ini_set('memory_limit', '256M');
+ini_set('memory_limit', '1024M');
 
-if(file_exists('.test'))
+if (file_exists('.test')) {
     require_once 'common.php';
-else
+} else {
     require_once 'heroku.php';
+}
 
-function is_holiday($pdate) {
+function get_schedule()
+{
+    $d1 = new DateTime("2017-9-20");
+    $d1 = new DateTime("2017-9-20");
+    $d1 = new DateTime("2017-9-20");
+    $d1 = new DateTime("2017-9-20");
+    $d1 = new DateTime("2017-9-20");
+    $d1 = new DateTime("2017-9-20");
+    $interval = date_diff($today, $start_date);
+    return $interval->format("%d");
+}
+
+function is_holiday($pdate)
+{
     $not_holiday  = new DateTime("2017-9-30");
     $diff = date_diff($not_holiday, $pdate);
-    if ( 0 == intval($diff->format("%a"))) {
+    if (0 == intval($diff->format("%a"))) {
         return false;
     }
     $when = strtotime($pdate->format('Y-m-d H:i:s'));
     $what_day = date("N", $when);
-    if ($what_day > 5)
+    if ($what_day > 5) {
         return true;
-    else
+    } else {
         return false;
+    }
 }
 
 function getWorkingDays($startDate, $endDate)
@@ -42,8 +57,9 @@ function getWorkingDays($startDate, $endDate)
         $not_holiday  = new DateTime("2017-9-30");
         $diff = date_diff($not_holiday, $endDate);
         $datediff = intval($diff->format("%R%a"));
-        if( $datediff >= 0)
+        if ($datediff >= 0) {
             $working_days++;
+        }
             
         return $working_days;
     }
@@ -70,22 +86,22 @@ function generate_class($today_now)
     $file_morning = "/tmp/" . $offset . "_class_1.png";
     $file_afternoon = "/tmp/" . $offset . "_class_2.png";
 
-    if ( !file_exists($file_morning) ) {
+    if (!file_exists($file_morning)) {
         $im = imagecreatefrompng('./images/class_schedule.png');
         $center = $classoffset[$offset];
         $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
-        if ($im_morning !== FALSE) {
+        if ($im_morning !== false) {
             imagepng($im_morning, $file_morning);
             $res=$c->UploadLocalToCloudFile($file_morning, $id_morning);
-            if($res['success']==1) {
+            if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
-            }else { 
+            } else {
                 $log->addError($res['data']);
             }
         }
         
         $im_after = imagecrop($im, ['x' => 1640, 'y' => $center-150, 'width' => 1580, 'height' => 300]);
-        if ($im_after !== FALSE) {
+        if ($im_after !== false) {
             imagepng($im_after, $file_afternoon);
         }
     }
@@ -93,5 +109,3 @@ function generate_class($today_now)
 }
 
 //$today = new DateTime('now');
-
-?>
