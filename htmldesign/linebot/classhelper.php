@@ -92,7 +92,7 @@ function generate_class($today_now)
         $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
         if ($im_morning !== false) {
             imagepng($im_morning, $file_morning);
-            $res=$c->UploadLocalToCloudFile($file_morning, $id_morning);
+            $res=$cloud->UploadLocalToCloudFile($file_morning, $id_morning);
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
             } else {
