@@ -62,5 +62,4 @@ function generate_todayclass(){
         }
     }
 }
-
 ?>
