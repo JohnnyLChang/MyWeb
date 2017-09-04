@@ -4,7 +4,9 @@
         "silex/silex": "~1.0@dev",
         "chh/cache-service-provider": "~1.0",
         "ext-curl": "*",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "monolog/monolog": "^1.23",
+        "cloudinary/cloudinary_php": "^1.8"
     },
     "extra": {
         "heroku": {
