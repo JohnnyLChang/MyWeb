@@ -10,6 +10,8 @@ if (file_exists('.test')) {
     require_once 'heroku.php';
 }
 
+$redi = new PRedisHelper();
+
 function get_schedule()
 {
     $d1 = new DateTime("2017-9-20");
@@ -76,9 +78,7 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url, $classoffset, $log;
-
-    $redi = new PRedisHelper();
+    global $url, $classoffset, $log, $redi;
 
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
@@ -126,7 +126,7 @@ function generate_class($today_now)
         }
     }
     else{
-        $url2 = $redi->Exists($id_afternoon);
+        $url2 = $redi->GetUrl($id_afternoon);
         $log->addInfo("get url2 " . $url2);
     }
     return array($url1, $url2);
