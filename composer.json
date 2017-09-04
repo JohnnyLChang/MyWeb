@@ -6,7 +6,9 @@
         "ext-curl": "*",
         "ext-gd": "*",
         "monolog/monolog": "^1.23",
-        "cloudinary/cloudinary_php": "^1.8"
+        "cloudinary/cloudinary_php": "^1.8",
+        "ext-memcached": "*",
+        "predis/predis": "1.0.3"
     },
     "extra": {
         "heroku": {

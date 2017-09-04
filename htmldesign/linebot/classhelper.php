@@ -1,6 +1,7 @@
 <?php
 require_once './include/composer.php';
 ini_set('memory_limit', '1024M');
+$redi = new PRedisHelper();
 
 if (file_exists('.test')) {
     require_once 'common.php';
@@ -74,7 +75,7 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url, $classoffset, $log;
+    global $url, $classoffset, $log, $redis;
 
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
@@ -86,7 +87,7 @@ function generate_class($today_now)
     $file_morning = "/tmp/" . $offset . "_class_1.png";
     $file_afternoon = "/tmp/" . $offset . "_class_2.png";
 
-    if (!file_exists($file_morning)) {
+    if (!$redi->Exists($id_morning)) {
         $im = imagecreatefrompng('./images/class_schedule.png');
         $center = $classoffset[$offset];
         $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
@@ -96,11 +97,18 @@ function generate_class($today_now)
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
                 $url1 = $res["surl"];
+                $redi->GSetUrl($id_morning, $url1);
             } else {
                 $log->addError($res['data']);
             }
         }
-        
+    }
+    else{
+        $url1 = $redi->GetUrl($id_morning);
+        $log->addInfo("get url1 " . $url1);
+    }
+    
+    if (!$redi->Exists($id_afternoon)) {
         $im_after = imagecrop($im, ['x' => 1640, 'y' => $center-150, 'width' => 1580, 'height' => 300]);
         if ($im_after !== false) {
             imagepng($im_after, $file_afternoon);
@@ -108,10 +116,15 @@ function generate_class($today_now)
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
                 $url2 = $res["surl"];
+                $redi->GSetUrl($id_afternoon, $url2);
             } else {
                 $log->addError($res['data']);
             }
         }
+    }
+    else{
+        $url2 = $redi->Exists($id_afternoon);
+        $log->addInfo("get url2 " . $url2);
     }
     return array($url1, $url2);
 }
