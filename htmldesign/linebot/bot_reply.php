@@ -100,5 +100,7 @@ function reply($content_type, $message)
        $context = stream_context_create(array(
        "http" => array("method" => "POST", "header" => implode(PHP_EOL, $header), "content" => json_encode($data), "ignore_errors" => true)
        ));
-       file_get_contents($url, false, $context);
+       $ret = file_get_contents($url, false, $context);
+
+       $log->addInfo("return from line : " . $ret);
 }
