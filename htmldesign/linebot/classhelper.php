@@ -95,6 +95,7 @@ function generate_class($today_now)
             $res=$cloud->UploadLocalToCloudFile($file_morning, $id_morning);
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
+                $url1 = $res["surl"];
             } else {
                 $log->addError($res['data']);
             }
@@ -106,6 +107,7 @@ function generate_class($today_now)
             $res=$cloud->UploadLocalToCloudFile($file_afternoon, $id_afternoon);
             if ($res['success']==1) {
                 $log->addInfo("file successfully Upload" . $res["surl"]);
+                $url2 = $res["surl"];
             } else {
                 $log->addError($res['data']);
             }
