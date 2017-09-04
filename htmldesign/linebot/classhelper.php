@@ -103,6 +103,12 @@ function generate_class($today_now)
         $im_after = imagecrop($im, ['x' => 1640, 'y' => $center-150, 'width' => 1580, 'height' => 300]);
         if ($im_after !== false) {
             imagepng($im_after, $file_afternoon);
+            $res=$cloud->UploadLocalToCloudFile($file_afternoon, $id_afternoon);
+            if ($res['success']==1) {
+                $log->addInfo("file successfully Upload" . $res["surl"]);
+            } else {
+                $log->addError($res['data']);
+            }
         }
     }
     return array($url1, $url2);

@@ -2,10 +2,6 @@
 class CloudImages
 {
     private $files;
-
-    function CloudImages()
-    {
-    }
     
     public function UploadLocalToCloudFile($local, $id)
     {
