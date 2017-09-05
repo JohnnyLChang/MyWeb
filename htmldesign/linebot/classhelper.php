@@ -75,14 +75,14 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url, $classoffset, $log, $redi, $res;
+    global $url, $classoffset, $log, $redi, $res1, $res2;
 
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
     $center = $classoffset[$offset];
     $url1 = sprintf($res1, $center-150);
     $url2 = sprintf($res2, $center-150);
-    
+
     return array($url1, $url2);
 }
 
