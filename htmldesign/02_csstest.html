@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML 5 CSS DEMO</title>
+    <style>
+        .center {
+            margin: auto;
+            width: 80%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+        }
+
+        .tooltip {
+            font-size: 20px;
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted blueviolet;
+        }
+
+        .tooltip .tooltiptext {
+            font-size: 20px;
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+
+        #test {
+            font-size: 40px;
+            color: violet;
+        }
+
+        #testrgba {
+            font-size: 40px;
+            color: rgba(60,50,60,3);
+        }
+
+        .abc{
+            font-size: 40px;
+            text-align: center;
+            color: red;
+        }
+
+        .opq{
+            font-size: 50px;
+            color:rgb(0,128,255);
+            background-color: white;
+        }
+        
+
+        header,
+        nav,
+        section,
+        article,
+        footer {
+            display: block;
+        }
+
+        header,
+        nav,
+        section,
+        article,
+        footer {
+            color: white;
+        }
+
+        header,
+        footer {
+            text-align: center;
+            width: 100%;
+        }
+
+        header {
+            background-color: red;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: relative;
+            top: 4px;
+            left: 20px;
+            background-color: green;
+            width: 100px;
+        }
+
+        section {
+            width: 86%;
+            background-color: gray;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        footer {
+            background-color: green;
+            font-size: 10px;
+        }
+
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-top: 1em;
+            margin-bottom: 1 em;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 40px;
+        }
+
+        div[class^="test"] {
+            background: #ffff00;
+            font-size: 24px;
+            color: blue;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        header
+    </header>
+    <nav>
+        <ul>
+            <li>nav 1</li>
+            <li>nav 2</li>
+        </ul>
+    </nav>
+    <article>
+        <section>
+            <h1>H1...</h1>
+            <div class="tooltip">Hover over me
+                <span class="tooltiptext">Tooltip text</span>
+            </div>
+            <h2 class="center">H2...</h2>
+            <h3 id="test">H3...</h3>
+            <h4 class="abc">H4...</h4>
+            <h5 id="testrgba">H5...</h5>
+            <h6 class="opq abc">H6...</h6>
+        </section>
+        <section>
+            <div class="first_test">The first div element.</div>
+            <div class="second">The second div element.</div>
+            <div class="test">The third div element.</div>
+            <p class="test">This is some text in a paragraph.</p>
+        </section>
+        <section>section 2</section>
+        <section>section 3</section>
+        <section>section 4</section>
+    </article>
+    <footer>
+        <p>
+            footer © 2011
+        </p>
+    </footer>
+</body>
+
+</html>
