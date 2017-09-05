@@ -12,25 +12,18 @@ if (file_exists('.test')) {
 
 $redi = new PRedisHelper();
 
-function get_schedule()
-{
-    $d1 = new DateTime("2017-9-20");
-    $d1 = new DateTime("2017-9-20");
-    $d1 = new DateTime("2017-9-20");
-    $d1 = new DateTime("2017-9-20");
-    $d1 = new DateTime("2017-9-20");
-    $d1 = new DateTime("2017-9-20");
-    $interval = date_diff($today, $start_date);
-    return $interval->format("%d");
-}
-
 function is_holiday($pdate)
 {
     $not_holiday  = new DateTime("2017-9-30");
+    $is_holiday  = new DateTime("2017-9-21");
     $diff = date_diff($not_holiday, $pdate);
     if (0 == intval($diff->format("%a"))) {
         return false;
     }
+    $diff = date_diff($is_holiday, $pdate);
+    if (0 == intval($diff->format("%a"))) {
+        return true;
+    }    
     $when = strtotime($pdate->format('Y-m-d H:i:s'));
     $what_day = date("N", $when);
     if ($what_day > 5) {

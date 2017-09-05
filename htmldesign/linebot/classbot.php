@@ -1,5 +1,5 @@
 <?php
-    include 'bot_reply.php';
+    require_once 'bot_reply.php';
 
     global $channel_id;
 	global $channel_secret;
@@ -37,9 +37,7 @@
 	
 	// 準備Post回Line伺服器的資料 
 	$header = ["Content-Type: application/json", "Authorization: Bearer {" . $channel_access_token . "}"];
-    
-    error_log("[classbot] recieve msg: " . $header);
-    
+
 	// 回覆訊息
     reply($content_type, $text);
 ?>
