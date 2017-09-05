@@ -2,6 +2,9 @@
 require_once './include/composer.php';
 require_once './include/classredishelper.php';
 
+$res1 = "http://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_300,w_1560,x_80,y_%d/v1504623069/class_schedule_hetios.png";
+$res2 = "http://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_300,w_1560,x_80,y_%d/v1504623069/class_schedule_hetios.png";
+
 ini_set('memory_limit', '1024M');
 
 if (file_exists('.test')) {
@@ -72,57 +75,14 @@ function dateDifference($start_date)
 
 function generate_class($today_now)
 {
-    global $url, $classoffset, $log, $redi;
+    global $url, $classoffset, $log, $redi, $res;
 
     $start_date  = new DateTime("2017-8-31");
     $offset =  getWorkingDays($start_date, $today_now);
-    $cloud = new CloudImages();
-    $url1 = "";
-    $url2 = "";
-    $id_morning = $offset . "_class_1";
-    $id_afternoon = $offset . "_class_2";
-    $file_morning = "/tmp/" . $offset . "_class_1.png";
-    $file_afternoon = "/tmp/" . $offset . "_class_2.png";
-
-    if (!$redi->Exists($id_morning)) {
-        $im = imagecreatefrompng('./images/class_schedule.png');
-        $center = $classoffset[$offset];
-        $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
-        if ($im_morning !== false) {
-            imagepng($im_morning, $file_morning);
-            $res=$cloud->UploadLocalToCloudFile($file_morning, $id_morning);
-            if ($res['success']==1) {
-                $log->addInfo("file successfully Upload" . $res["surl"]);
-                $url1 = $res["surl"];
-                $redi->SetUrl($id_morning, $url1);
-            } else {
-                $log->addError($res['data']);
-            }
-        }
-    }
-    else{
-        $url1 = $redi->GetUrl($id_morning);
-        $log->addInfo("get url1 " . $url1);
-    }
+    $center = $classoffset[$offset];
+    $url1 = sprintf($res1, $center-150);
+    $url2 = sprintf($res2, $center-150);
     
-    if (!$redi->Exists($id_afternoon)) {
-        $im_after = imagecrop($im, ['x' => 1640, 'y' => $center-150, 'width' => 1580, 'height' => 300]);
-        if ($im_after !== false) {
-            imagepng($im_after, $file_afternoon);
-            $res=$cloud->UploadLocalToCloudFile($file_afternoon, $id_afternoon);
-            if ($res['success']==1) {
-                $log->addInfo("file successfully Upload" . $res["surl"]);
-                $url2 = $res["surl"];
-                $redi->SetUrl($id_afternoon, $url2);
-            } else {
-                $log->addError($res['data']);
-            }
-        }
-    }
-    else{
-        $url2 = $redi->GetUrl($id_afternoon);
-        $log->addInfo("get url2 " . $url2);
-    }
     return array($url1, $url2);
 }
 
