@@ -5,18 +5,30 @@ require_once('./heroku.php');
 
 $im = imagecreatefrompng('./images/class_schedule.png');
 
-for ($x = 3; $x <= 18; $x++) {
-    $offset = $x; 
-    $id_morning = $offset . "_class_1";
-    $id_afternoon = $offset . "_class_2";
-    $file_morning = "/tmp/" . $offset . "_class_1.png";
-    $file_afternoon = "/tmp/" . $offset . "_class_2.png";
+$res = "http://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_300,w_1560,x_80,y_%d/v1504623069/class_schedule_hetios.png";
 
-    $center = $classoffset[$offset];
-    $im_morning = imagecrop($im, ['x' => 80, 'y' => $center-150, 'width' => 1560, 'height' => 300]);
-    if ($im_morning !== false) {
-        imagepng($im_morning, $file_morning);
-        echo "Create for $x\n";
-    }
+$images = array();
+
+for ($x = 3; $x <= 17; $x++) {
+    $center = $classoffset[$x];
+    array_push( $images, sprintf($res, $center-150));
 } 
 ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <?php foreach($images as $image):?>
+    <img src="<?php echo ($image);?>"/><br/>
+    <?php endforeach;?>
+    </body>
+</html>
