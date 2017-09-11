@@ -1,1 +1,4 @@
-<?php include_once("./game/index.html");?>
+<?php 
+#include_once("./game/index.html");
+echo "test
+?>

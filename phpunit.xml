@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit bootstrap="./vendor/autoload.php">
+    <testsuites>
+        <testsuite name="test suite">
+            <directory suffix="Test.php">./linebot/tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <includePath>./linebot/include</includePath>
+        <includePath>./linebot/</includePath>
+    </php>
+</phpunit>
