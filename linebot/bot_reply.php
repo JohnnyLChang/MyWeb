@@ -29,7 +29,7 @@ function reply($content_type, $message)
 
             $class = new \JavaClass\ClassUrlHelper($log);
             list($url1, $url2) =  $class->GetClassUrl($today);
-            if (is_null($u1)|| is_null($u2)) {
+            if (is_null($url1)|| is_null($url2)) {
                  $replymsg = mb_substr($message, 0, 2, "UTF-8") . " " . date_format($today, "Y/m/d") . " 不用上課喔！！";
                  $data = [
                     "to" => $from,
