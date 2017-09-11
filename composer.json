@@ -8,7 +8,9 @@
         "monolog/monolog": "^1.23",
         "cloudinary/cloudinary_php": "^1.8",
         "predis/predis": "1.0.3",
-        "twbs/bootstrap": "^3.3"
+        "twbs/bootstrap": "^3.3",
+        "phpunit/phpunit": "^6.3",
+        "phpunit/php-invoker": "^1.1"
     },
     "extra": {
         "heroku": {
@@ -28,5 +30,8 @@
             ],
             "newrelic": true
         }
+    },
+    "autoload": {
+        "psr-0": { "": "./linebot/test/" }
     }
 }

@@ -19,6 +19,7 @@ function is_holiday($pdate)
 {
     $not_holiday  = new DateTime("2017-9-30");
     $is_holiday  = new DateTime("2017-9-21");
+    $is_holiday2  = new DateTime("2017-9-28");
     $diff = date_diff($not_holiday, $pdate);
     if (0 == intval($diff->format("%a"))) {
         return false;
@@ -26,7 +27,11 @@ function is_holiday($pdate)
     $diff = date_diff($is_holiday, $pdate);
     if (0 == intval($diff->format("%a"))) {
         return true;
-    }    
+    }
+    $diff = date_diff($is_holiday2, $pdate);
+    if (0 == intval($diff->format("%a"))) {
+        return true;
+    }
     $when = strtotime($pdate->format('Y-m-d H:i:s'));
     $what_day = date("N", $when);
     if ($what_day > 5) {
