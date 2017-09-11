@@ -28,7 +28,7 @@ function reply($content_type, $message)
             }
 
             $class = new \JavaClass\ClassUrlHelper($log);
-            list($u1, $u2) =  $class->GetClassUrl($today);
+            list($url1, $url2) =  $class->GetClassUrl($today);
             if (is_null($u1)|| is_null($u2)) {
                  $replymsg = mb_substr($message, 0, 2, "UTF-8") . " " . date_format($today, "Y/m/d") . " 不用上課喔！！";
                  $data = [
@@ -38,13 +38,13 @@ function reply($content_type, $message)
                         )
                      ];
             } else {
-                 $log->addInfo(" url1: " . $l1);
-                 $log->addInfo(" url2: " . $l2);
+                 $log->addInfo(" url1: " . $url1);
+                 $log->addInfo(" url2: " . $url2);
                  $data = [
                     "to" => $from,
                     "messages" => array(
-                        ["type" => "image", "originalContentUrl" => $l1, "previewImageUrl" => $l1],
-                        ["type" => "image", "originalContentUrl" => $l2, "previewImageUrl" => $l2]
+                        ["type" => "image", "originalContentUrl" => $url1, "previewImageUrl" => $url1],
+                        ["type" => "image", "originalContentUrl" => $url2, "previewImageUrl" => $url2]
                         )
                      ];
             }
