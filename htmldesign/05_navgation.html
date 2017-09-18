@@ -16,40 +16,48 @@
         }
         
         #main {
-            padding-top: 40px;
+            padding-top: 50px;
+        }
+        
+        #primary_top {
+            /*use fixed position on top*/
+            position: fixed;
+            /*always top menu bar*/
+            top: 0px;
+            /*always top menu bar*/
+            width: 100%;
+            /*always top menu bar*/
+            background-color: #B0ADE0;
+            height: 40px;
         }
         
         #primary_nav_wrap {
             margin-top: 0px;
-            background-color: #B0ADE0;
-            height: 30px;
-            /*use fixed position on top*/
-            position: absolute;
-            top: 0px;
-            width: 100%;
         }
         
         #primary_nav_wrap ul {
             list-style: none;
             position: relative;
+            font-size: 30px;
             float: left;
             margin: 0;
             padding: 0;
             width: 100%;
             display: table;
             text-align: center;
-            height: 32px;
         }
         
         #primary_nav_wrap ul a {
+            top: 0px;
+            position: relative;
             display: block;
             color: #333;
             text-decoration: none;
             font-weight: 700;
             font-size: 18px;
-            line-height: 32px;
+            line-height: 45px;
             padding: 0 15px;
-            height: 36px;
+            height: 45px;
             font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
         }
         
@@ -58,17 +66,20 @@
             float: left;
             margin: 0;
             padding: 0;
+            top: 0px;
             display: inline-block;
             float: none;
             text-align: left;
         }
         
         #primary_nav_wrap ul li.current-menu-item {
-            background: #ddd
+            background: #ddd;
+            height: 40px;
         }
         
         #primary_nav_wrap ul li:hover {
-            background: #344972
+            background: #344972;
+            border-radius: 5px 5px 0px 0px;
         }
         
         #primary_nav_wrap ul ul {
@@ -76,20 +87,23 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: #696969;
-            padding: 0
+            /*fix connected background*/
+            padding: 0;
         }
         
         #primary_nav_wrap ul ul li {
             float: none;
             width: 150px;
-            height: 45px;
         }
         
         #primary_nav_wrap ul ul a {
             line-height: 25px;
+            ;
+            /*adjust submenu items position*/
             background: #696969;
-            padding: 10px 15px
+            padding: 10px 10px;
+            font-size: 18px;
+            height: 20px;
         }
         
         #primary_nav_wrap ul ul a:hover {
