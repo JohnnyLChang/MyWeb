@@ -12,34 +12,23 @@ if (file_exists('.test')) {
 
 class ClassUrlHelper
 {
-    private $urlfmt1 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_300,w_1560,x_80,y_%d/v1504623069/class_schedule_hetios.png";
-    private $urlfmt2 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_300,w_1560,x_1640,y_%d/v1504623069/class_schedule_hetios.png";
+    private $urlfmt1 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1080,x_30,y_%d/v1504623069/%s.png";
+    private $urlfmt2 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1250,x_1050,y_%d/v1504623069/%s.png";
     private $log;
 
     private $classdata = array(
-        911 => 2605,
-        912 => 2920,
-        913 => 3200,
-        914 => 3500,
-        915 => 3780,
-        918 => 4090,
-        919 => 4395,
-        920 => 4690,
-        922 => 5540,
-        925 => 5840,
-        926 => 6140,
-        927 => 6440,
-        929 => 6740,
-        930 => 7040,
-        1002 => 7330,
-        1003 => 7630,
-        1005 => 7930,
-        1006 => 8230,
-        1011 => 8470,
-        1012 => 8730,
-        1013 => 8930,
-        1016 => 9330,
-        1017 => 10140
+        927 => array(1040, "class2_iahadd"),
+        928 => array(1230, "class2_iahadd"),
+        929 => array(1390, "class2_iahadd"),
+        930 => array(1590, "class2_iahadd"),
+        1002 => array(1800, "class2_iahadd"),
+        1003 => array(2000, "class2_iahadd"),
+        1005 => array(2200, "class2_iahadd"),
+        1006 => array(2380, "class2_iahadd"),
+        1011 => array(2550, "class2_iahadd"),
+        1012 => array(2720, "class2_iahadd"),
+        1013 => array(2900, "class2_iahadd"),
+        1016 => array(3100, "class2_iahadd"),
     );
     public function __construct($log)
     {
@@ -61,13 +50,14 @@ class ClassUrlHelper
 
     public function GetClassUrl($today_now)
     {
-        $center = $this->GetClassIdx($today_now);
+        $obj = $this->GetClassIdx($today_now);
         $url1 = "";
         $url2 = "";
+        $center = $obj[0];
         if ($center > 0) {
             $this->log->addInfo("Center is " . $center);
-            $url1 = sprintf($this->urlfmt1, $center-150);
-            $url2 = sprintf($this->urlfmt2, $center-150);
+            $url1 = sprintf($this->urlfmt1, $center-150, $obj[1]);
+            $url2 = sprintf($this->urlfmt2, $center-150, $obj[1]);
             return array($url1, $url2);
         }
         return array(null, null);
