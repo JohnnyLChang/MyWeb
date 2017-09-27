@@ -1,0 +1,11 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+cursor	../mysql.py	/^cursor = db.cursor()$/;"	kind:variable	line:22
+db	../mysql.py	/^db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="Crypto!@3", db="mycourse_20170526", ssl={'ssl':$/;"	kind:variable	line:15
+mysql.py	../mysql.py	1;"	kind:file	line:1
+result	../mysql.py	/^result = cursor.fetchall()$/;"	kind:variable	line:26
+ssl	../mysql.py	/^ssl={'ssl':$/;"	kind:variable	line:7
