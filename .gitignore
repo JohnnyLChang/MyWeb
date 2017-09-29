@@ -4,3 +4,4 @@ common.php
 cloudinary_local.php
 vendor/*
 htmldesign/linebot/vendor/*
+node_modules/*

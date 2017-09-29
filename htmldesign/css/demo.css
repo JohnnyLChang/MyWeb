@@ -1,0 +1,29 @@
+#float-img-bg {
+    height: 300px;
+    width: 600px;
+    background-color: lightyellow;
+    display: table-cell;
+}
+
+.base {
+    margin: 10px;
+    box-shadow: 10px 10px 1px #888888;
+}
+
+.float_image {
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+.float_image2 {
+    width: 120px;
+    float: right;
+}
+
+.float_image3 {
+    position: relative;
+    top: 200px;
+    width: 120px;
+    float: left;
+}
