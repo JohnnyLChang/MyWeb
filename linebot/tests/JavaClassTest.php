@@ -23,9 +23,9 @@ class JavaClassTest extends TestCase
     public function testJavaClassIdx()
     {
         $class = new JavaClass\ClassUrlHelper($this->log);
-        $d1 =  $class->GetClassIdx(new DateTime('2017-9-27'));
-        $d2 =  $class->GetClassIdx(new DateTime('2017-9-28'));
-        $d3 =  $class->GetClassIdx(new DateTime('2017-9-29'));
+        $d1 =  $class->GetClassIdx(new DateTime('2017-10-16'));
+        $d2 =  $class->GetClassIdx(new DateTime('2017-10-17'));
+        $d3 =  $class->GetClassIdx(new DateTime('2017-10-18'));
         $this->assertGreaterThan(0, $d1[0]);
         $this->assertGreaterThan(0, $d2[0]);
         $this->assertGreaterThan(0, $d3[0]);
@@ -34,13 +34,15 @@ class JavaClassTest extends TestCase
     public function testJavaClassUrl()
     {
         $class = new JavaClass\ClassUrlHelper($this->log);
-        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-9-27'));
+        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-10-16'));
         $this->assertNotNull($u1);
         $this->assertNotNull($u2);
-        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-9-28'));
+        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-10-17'));
+        $this->log->addInfo($u1);
+        $this->log->addInfo($u2);
         $this->assertNotNull($u1);
         $this->assertNotNull($u2);
-        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-9-29'));
+        list($u1, $u2) =  $class->GetClassUrl(new DateTime('2017-10-18'));
         $this->assertNotNull($u1);
         $this->assertNotNull($u2);
         $this->log->addInfo($u1);

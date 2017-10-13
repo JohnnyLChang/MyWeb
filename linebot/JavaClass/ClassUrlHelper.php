@@ -12,10 +12,11 @@ if (file_exists('.test')) {
 
 class ClassUrlHelper
 {
-    private $urlfmt1 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1080,x_30,y_%d/v1504623069/%s.png";
+    private $urlfmt1 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1079,x_30,y_%d/v1504623069/%s.png";
     private $urlfmt2 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1250,x_1050,y_%d/v1504623069/%s.png";
     private $log;
 
+    private $max_date = 1110;
     private $classdata = array(
         927 => array(1040, "class2_iahadd"),
         928 => array(1230, "class2_iahadd"),
@@ -59,6 +60,8 @@ class ClassUrlHelper
         if (array_key_exists($index, $this->classdata)) {
             return $this->classdata[$index];
         } else {
+            if($index > $max_date)
+                return -1;
             return 0;
         }
     }
