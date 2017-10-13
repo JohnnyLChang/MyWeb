@@ -29,6 +29,21 @@ class ClassUrlHelper
         1012 => array(2720, "class2_iahadd"),
         1013 => array(2900, "class2_iahadd"),
         1016 => array(3100, "class2_iahadd"),
+        1017 => array(460, "class3_iahadd"),
+        1018 => array(640, "class3_iahadd"),
+        1019 => array(820, "class3_iahadd"),
+        1023 => array(1020, "class3_iahadd"),
+        1025 => array(1220, "class3_iahadd"),
+        1026 => array(1420, "class3_iahadd"),
+        1027 => array(1620, "class3_iahadd"),
+        1030 => array(1820, "class3_iahadd"),
+        1101 => array(2020, "class3_iahadd"),
+        1102 => array(2220, "class3_iahadd"),
+        1103 => array(2420, "class3_iahadd"),
+        1106 => array(2620, "class3_iahadd"),
+        1107 => array(2800, "class3_iahadd"),
+        1109 => array(3000, "class3_iahadd"),
+        1110 => array(3180, "class3_iahadd"),
     );
     public function __construct($log)
     {
