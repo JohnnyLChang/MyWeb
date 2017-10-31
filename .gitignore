@@ -1,4 +1,5 @@
 *.test
+*.swp
 test.php
 common.php
 cloudinary_local.php

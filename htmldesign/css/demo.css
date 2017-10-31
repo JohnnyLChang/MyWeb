@@ -5,6 +5,30 @@
     display: table-cell;
 }
 
+.hover {
+    background-color: lightblue;
+}
+
+.line {
+    cursor: pointer;
+}
+
+.selected {
+    color: #123456;
+}
+
+.large {
+    font-size:40px;
+}
+
+.origin {
+    font-size: 20px;
+}
+
+.small {
+    font-size: 10px;
+}
+
 .base {
     margin: 10px;
     box-shadow: 10px 10px 1px #888888;
@@ -17,6 +41,7 @@
 }
 
 .float_image2 {
+    position: relative;
     width: 120px;
     float: right;
 }
