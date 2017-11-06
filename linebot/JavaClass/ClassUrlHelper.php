@@ -16,7 +16,7 @@ class ClassUrlHelper
     private $urlfmt2 = "https://res.cloudinary.com/hiw54u1hl/image/upload/c_crop,h_280,w_1250,x_1050,y_%d/v1504623069/%s.png";
     private $log;
 
-    private $max_date = 1110;
+    private $max_date = 1124;
     private $classdata = array(
         927 => array(1040, "class2_iahadd"),
         928 => array(1230, "class2_iahadd"),
@@ -45,6 +45,16 @@ class ClassUrlHelper
         1107 => array(2800, "class3_iahadd"),
         1109 => array(3000, "class3_iahadd"),
         1110 => array(3180, "class3_iahadd"),
+
+        1113 => array(465, "class4_iahadd"),
+        1114 => array(665, "class4_iahadd"),
+        1115 => array(865, "class4_iahadd"),
+
+        1117 => array(1065, "class4_iahadd"),
+        1120 => array(1265, "class4_iahadd"),
+        1121 => array(1465, "class4_iahadd"),
+        1122 => array(1665, "class4_iahadd"),
+        1124 => array(1865, "class4_iahadd"),
     );
     public function __construct($log)
     {
@@ -60,7 +70,7 @@ class ClassUrlHelper
         if (array_key_exists($index, $this->classdata)) {
             return $this->classdata[$index];
         } else {
-            if($index > $max_date)
+            if($index > $this->max_date)
                 return -1;
             return 0;
         }
