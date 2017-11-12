@@ -46,7 +46,7 @@ class ClassUrlHelper
         1109 => array(3000, "class3_iahadd"),
         1110 => array(3180, "class3_iahadd"),
 
-        1113 => array(465, "class4_iahadd"),
+        1113 => array(466, "class4_iahadd"),
         1114 => array(665, "class4_iahadd"),
         1115 => array(865, "class4_iahadd"),
 
@@ -83,9 +83,12 @@ class ClassUrlHelper
         $url2 = "";
         $center = $obj[0];
         if ($center > 0) {
-            $this->log->addInfo("Center is " . $center);
+          $this->log->addInfo("Center is " . $center);
+          $this->log->addInfo('check point');
             $url1 = sprintf($this->urlfmt1, $center-150, $obj[1]);
             $url2 = sprintf($this->urlfmt2, $center-150, $obj[1]);
+            $this->log->addInfo($url1);
+            $this->log->addInfo($url2);
             return array($url1, $url2);
         }
         return array(null, null);
