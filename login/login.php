@@ -37,12 +37,12 @@
     $email = $me['email'];
     echo $name . '<BR>';
     echo $email . '<BR>';
-    $logoutUrl = $helper->getLogoutUrl($accessToken, 'http://jlcdemo.herokuapp.com/login/login.php?action=logout');
+    $logoutUrl = $helper->getLogoutUrl($accessToken, 'https://jlcdemo.herokuapp.com/login/login.php?action=logout');
     echo '<a href="' . htmlspecialchars($logoutUrl) . '">Logout Facebook!</a>';
   }
   else{
     $permissions = ['email']; // Optional permissions
-    $loginUrl = $helper->getLoginUrl('http://jlcdemo.herokuapp.com/login/fb-callback.php', $permissions);
+    $loginUrl = $helper->getLoginUrl('https://jlcdemo.herokuapp.com/login/fb-callback.php', $permissions);
   
     echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
   }

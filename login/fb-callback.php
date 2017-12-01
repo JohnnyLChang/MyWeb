@@ -78,4 +78,4 @@ $fb = new Facebook\Facebook([
   
   // User is logged in with a long-lived access token.
   // You can redirect them to a members-only page.
-  header('Location: http://jlcdemo.herokuapp.com/login/login.php');
+  header('Location: https://jlcdemo.herokuapp.com/login/login.php');
